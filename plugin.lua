@@ -1,7 +1,4 @@
 function applyTemplate(data, template)
-    print(data["text"])
-    print(data["timestamp"])
-    print(os.date("yyyy-MM-dd", tonumber(data["timestamp"])))
     return string.interpolate(template, { text = data["text"], date = os.date("yyyy-MM-dd", tonumber(data["timestamp"])), time = os.date("HH:mm:ss", tonumber(data["timestamp"])) })
 end
 
@@ -19,7 +16,6 @@ function writeAtOffsetToFile(settings, data, editOffset)
     local remainingBytes = file.read(file.getLength() - adjustedPosition)
     file.setPosition(adjustedPosition)
 
-    print("/////editOffset")
     print(editOffset)
     if editOffset >= 0 then
         file.writeString(applyTemplate(data, settings["Formatting"]) .. '\n')
@@ -52,8 +48,6 @@ function add(settings, data)
           file.setPosition(0)
       end
 
-      print("/////<1")
-
       writeAtOffsetToFile(settings, data, editOffset)
       file.close()
       return true
@@ -69,7 +63,6 @@ function add(settings, data)
             file.setPosition(position)
         end
 
-        print("/////string.find(line, searchString)")
         writeAtOffsetToFile(settings, data, editOffset)
         file.close()
         return true
