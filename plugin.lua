@@ -1,5 +1,5 @@
-function applyDecoration(text, decoration)
-    return string.format(decoration, text)
+function applyTemplate(data, template)
+    return string.interpolate(template, { text = data["text"], date = os.date("yyyy-MM-dd", data["timestamp"]), time = os.date("HH:mm:ss", data["timestamp"]) })
 end
 
 function writeAtOffsetToFile(settings, data, editOffset)
@@ -17,9 +17,9 @@ function writeAtOffsetToFile(settings, data, editOffset)
     file.setPosition(adjustedPosition)
 
     if editOffset >= 0 then
-        file.writeString(applyDecoration(data["text"], settings["Formatting"]) .. '\n')
+        file.writeString(applyTemplate(data, settings["Formatting"]) .. '\n')
     else
-        file.writeString('\n' .. applyDecoration(data["text"], settings["Formatting"]))
+        file.writeString('\n' .. applyTemplate(data, settings["Formatting"]))
     end
     file.writeString(remainingBytes)
 end
@@ -80,7 +80,7 @@ function remove(settings, data)
     local position = 0
     file.setPosition(0);
 
-    local originalText = applyDecoration(data["text"], settings["Formatting"])
+    local originalText = applyTemplate(data, settings["Formatting"])
 
     while file.getPosition() < file.getLength() do
       position = file.getPosition()
@@ -109,7 +109,7 @@ end
 function getInitialSettings()
     return {
         { name = "Target File Path", _description = "The file path of the target file to be edited." ,  type = "file" },
-        { name = "Formatting", _description = "Defines the formatting to apply to the text being inserted.", type = "formatting", _defaultValue = "{txt}" },
+        { name = "Formatting", _description = "Defines the formatting to apply to the text being inserted.", type = "formatting", _defaultValue = "__{{text}}__", _templateOptions = { text = "Text being inserted", time = "Formatted time of creation", date = "Formatted date of creation" } },
         { name = "Target String", _description = "The plugin will search for the first line containing this string to determine the location for editing." , type = "text", _default = "", _hint = "leave empty to edit relative to EOF" },
         { name = "Edit Offset", _description = "An integer (+-) specifying the number of lines relative to the anchor string's location where the editing should occur.", type = "number", _default = -1, _hint = "-1" },
     }
