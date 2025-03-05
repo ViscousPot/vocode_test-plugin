@@ -20,6 +20,7 @@ function writeAtOffsetToFile(settings, data, editOffset)
     file.setPosition(adjustedPosition)
 
     print("/////editOffset")
+    print(editOffset)
     if editOffset >= 0 then
         file.writeString(applyTemplate(data, settings["Formatting"]) .. '\n')
     else
