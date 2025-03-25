@@ -31,7 +31,7 @@ function add(settings, data)
   print(data["text"])
   local searchString = settings["Target String"]
 
-  result = file.open("Target File Path", "applyTemplate")
+  result = file.open("Target File Path", "applyTemplate", data)
   if not result then
     return false
   end
