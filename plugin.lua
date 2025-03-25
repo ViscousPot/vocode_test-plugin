@@ -49,7 +49,7 @@ function add(settings, data)
     end
 
     writeAtOffsetToFile(settings, data, editOffset)
-    file.close()
+    file.close("applyTemplate", data)
     return true
   end
 
@@ -64,12 +64,12 @@ function add(settings, data)
       end
 
       writeAtOffsetToFile(settings, data, editOffset)
-      file.close()
+      file.close("applyTemplate", data)
       return true
     end
   end
 
-  file.close()
+  file.close("applyTemplate", data)
   return true
 end
 
@@ -98,12 +98,12 @@ function remove(settings, data)
       file.writeString(remainingBytes)
       file.truncate(fileLength - string.len(originalText .. '\n'))
               
-      file.close()
+      file.close("applyTemplate", data)
       return true
     end
   end
 
-  file.close()
+  file.close("applyTemplate", data)
   return true
 end
 
