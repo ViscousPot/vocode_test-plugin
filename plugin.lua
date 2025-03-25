@@ -74,7 +74,7 @@ function add(settings, data)
 end
 
 function remove(settings, data)
-  result = file.open("Target File Path")
+  result = file.open("Target File Path", "applyTemplate", data)
   if not result then
     return false
   end
