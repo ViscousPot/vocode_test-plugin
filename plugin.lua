@@ -89,7 +89,7 @@ function remove(settings, data)
 
     local firstLine = string.match(originalText, "([^\n]*)")
     local count = 0
-    for _ in string.gmatch(str, "[^\n]*") do
+    for _ in string.gmatch(originalText, "[^\n]*") do
         count = count + 1
     end
     if (line == firstLine) then 
