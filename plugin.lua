@@ -1,11 +1,6 @@
 function applyTemplate(data, template)
-  print(data["text"])
-  print(data["text"])
-  print(data["timestamp"])
-  print(template)
-  print(string.upper("test"))
-  print(string.interp(template, { text = data["text"], date = os.date("yyyy-MM-dd", tonumber(data["timestamp"])), time = os.date("HH:mm:ss", tonumber(data["timestamp"])) }))
-  return string.interp(template, { text = data["text"], date = os.date("yyyy-MM-dd", tonumber(data["timestamp"])), time = os.date("HH:mm:ss", tonumber(data["timestamp"])) })
+  print(string.interpolate(template, { text = data["text"], date = os.date("yyyy-MM-dd", tonumber(data["timestamp"])), time = os.date("HH:mm:ss", tonumber(data["timestamp"])) }))
+  return string.interpolate(template, { text = data["text"], date = os.date("yyyy-MM-dd", tonumber(data["timestamp"])), time = os.date("HH:mm:ss", tonumber(data["timestamp"])) })
 end
 
 function writeAtOffsetToFile(settings, data, editOffset)
