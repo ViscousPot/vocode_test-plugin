@@ -106,7 +106,7 @@ function remove(settings, data)
         count = count + 1
     end
     if (line == firstLine) then 
-      for i = 1,count-1  do
+      for i = 1,count  do
         file.readForwardLine()
       end 
       local endOfLinePosition = file.getPosition()
@@ -117,7 +117,8 @@ function remove(settings, data)
       file.setPosition(position)
 
       file.writeString(remainingBytes)
-      file.truncate(fileLength - string.len(originalText .. '\n'))
+      local bytesToRemove = endOfLinePosition - position
+      file.truncate(fileLength - bytesToRemove)
               
       file.close("applyTemplate", data)
       return true
