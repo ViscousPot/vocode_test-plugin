@@ -118,7 +118,7 @@ function remove(settings, data)
 
       file.writeString(remainingBytes)
       local bytesToRemove = endOfLinePosition - position
-      file.truncate(fileLength - bytesToRemove)
+      file.truncate(max(fileLength - string.len(originalText .. '\n'), 0))
               
       file.close("applyTemplate", data)
       return true
@@ -126,7 +126,7 @@ function remove(settings, data)
   end
 
   file.close("applyTemplate", data)
-  return true
+  return false
 end
 
 function getInitialSettings()
