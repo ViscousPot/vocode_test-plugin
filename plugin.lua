@@ -1,7 +1,7 @@
 function applyTemplate(data, template)
   local timestamp = tonumber(data["timestamp"])
   local dateString = os.date("yyyy-MM-dd", timestamp)
-  local timeString = os.date("yyyy-MM-dd", timestamp)
+  local timeString = os.date("HH:mm:ss", timestamp)
   print(string.interpolate(template, { text = data["text"], date = dateString, time = timeString }))
   return string.interpolate(template, { text = data["text"], date = dateString, time = timeString })
 end
