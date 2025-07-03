@@ -4,7 +4,7 @@ function applyTemplate(data, template)
   print(text)
   local timestamp = data["timestamp"]
   print(timestamp)
-  local timestampNum = tonumber(timestamp)
+  local timestampNum = toNumber(timestamp)
   print(timestampNum)
   local dateString = os.date("yyyy-MM-dd", timestampNum)
   local timeString = os.date("HH:mm:ss", timestampNum)
@@ -46,7 +46,7 @@ function add(settings, data)
     return false
   end
   
-  local editOffset = tonumber(settings["Edit Offset"]) or 0
+  local editOffset = toNumber(settings["Edit Offset"]) or 0
 
   local position = 0
   file.setPosition(0)
@@ -117,8 +117,8 @@ function remove(settings, data)
       file.setPosition(position)
 
       file.writeString(remainingBytes)
-      
-      file.truncate(math.max(fileLength - string.len(originalText .. '\n'), 0))
+
+      file.truncate(toInteger(math.max(fileLength - string.len(originalText .. '\n'), 0)))
               
       file.close("applyTemplate", data)
       return true
