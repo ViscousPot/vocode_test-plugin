@@ -1,7 +1,7 @@
 function applyTemplate(data, template)
   local text = data["text"];
-  local timestamp = data["timestamp"];
   print(text)
+  local timestamp = data["timestamp"];
   print(timestamp)
   local timestampNum = tonumber(timestamp)
   print(timestampNum)
