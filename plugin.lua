@@ -1,11 +1,12 @@
 function applyTemplate(data, template)
   local text = data["text"];
-  local timestamp = tonumber(data["timestamp"])
+  local timestamp = data["timestamp"];
+  local timestampNum = tonumber(timestamp)
   print(data["timestamp"])
   print(text)
   print(timestamp)
-  local dateString = os.date("yyyy-MM-dd", timestamp)
-  local timeString = os.date("HH:mm:ss", timestamp)
+  local dateString = os.date("yyyy-MM-dd", timestampNum)
+  local timeString = os.date("HH:mm:ss", timestampNum)
   print(string.interpolate(template, { text = text, date = dateString, time = timeString }))
   return string.interpolate(template, { text = text, date = dateString, time = timeString })
 end
