@@ -1,9 +1,9 @@
 function applyTemplate(data, template)
   local text = data["text"];
   local timestamp = data["timestamp"];
-  local timestampNum = tonumber(timestamp)
   print(text)
   print(timestamp)
+  local timestampNum = tonumber(timestamp)
   print(timestampNum)
   local dateString = os.date("yyyy-MM-dd", timestampNum)
   local timeString = os.date("HH:mm:ss", timestampNum)
