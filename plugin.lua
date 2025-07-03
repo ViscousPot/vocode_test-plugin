@@ -101,14 +101,16 @@ function remove(settings, data)
     print(line)
 
     local firstLine = string.match(originalText, "([^\n]*)")
-    local count = -1
+    local count = 0
     for _ in string.gmatch(originalText, "[^\n]*") do
         count = count + 1
     end
     if (line == firstLine) then 
-      for i = 1,count  do
-        print(file.readForwardLine())
-      end 
+      if (count > 0) then
+        for i = 1,count  do
+          print(file.readForwardLine())
+        end 
+      end
       local endOfLinePosition = file.getPosition()
 
       local fileLength = file.getLength()
