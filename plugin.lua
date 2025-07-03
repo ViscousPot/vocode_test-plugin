@@ -49,7 +49,7 @@ function add(settings, data)
   local editOffset = tonumber(settings["Edit Offset"]) or 0
 
   local position = 0
-  file.setPosition(0);
+  file.setPosition(0)
 
   if string.len(searchString) < 1 then
     if editOffset < 0 then
@@ -65,7 +65,7 @@ function add(settings, data)
 
   while file.getPosition() < file.getLength() do
     position = file.getPosition()
-    local line = file.readForwardLine();
+    local line = file.readForwardLine()
 
     if (string.find(line, searchString)) then 
 
@@ -89,13 +89,16 @@ function remove(settings, data)
     return false
   end
   local position = 0
-  file.setPosition(0);
+  file.setPosition(0)
 
   local originalText = applyTemplate(data, settings["Formatting"])
 
+  print(originalText)
+
   while file.getPosition() < file.getLength() do
     position = file.getPosition()
-    local line = file.readForwardLine();
+    local line = file.readForwardLine()
+    print(line)
 
     local firstLine = string.match(originalText, "([^\n]*)")
     local count = 0
