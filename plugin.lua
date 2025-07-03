@@ -1,7 +1,9 @@
 function applyTemplate(data, template)
   local timestamp = tonumber(data["timestamp"])
-  print(string.interpolate(template, { text = data["text"], date = os.date("yyyy-MM-dd", timestamp), time = os.date("HH:mm:ss", timestamp) }))
-  return string.interpolate(template, { text = data["text"], date = os.date("yyyy-MM-dd", timestamp), time = os.date("HH:mm:ss", timestamp) })
+  local dateString = os.date("yyyy-MM-dd", timestamp)
+  local timeString = os.date("yyyy-MM-dd", timestamp)
+  print(string.interpolate(template, { text = data["text"], date = dateString, time = timeString }))
+  return string.interpolate(template, { text = data["text"], date = dateString, time = timeString })
 end
 
 function writeAtOffsetToFile(settings, data, editOffset)
