@@ -1,5 +1,6 @@
 function applyTemplate(data, template)
   print(data["text"])
+  print(data["text"])
   print(data["timestamp"])
   print(template)
   return string.interpolate(template, { text = data["text"], date = os.date("yyyy-MM-dd", tonumber(data["timestamp"])), time = os.date("HH:mm:ss", tonumber(data["timestamp"])) })
