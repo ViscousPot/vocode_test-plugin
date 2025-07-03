@@ -105,6 +105,7 @@ function remove(settings, data)
     for _ in string.gmatch(originalText, "[^\n]*") do
         count = count + 1
     end
+    print(count)
     if (line == firstLine) then 
       if (count > 0) then
         for i = 1,count  do
