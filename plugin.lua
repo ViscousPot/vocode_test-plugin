@@ -67,8 +67,6 @@ function add(settings, data)
     position = file.getPosition()
     local line = file.readForwardLine()
 
-    print(line)
-
     if (string.find(line, searchString)) then 
 
       if editOffset < 0 then
