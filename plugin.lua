@@ -114,6 +114,9 @@ function remove(settings, data)
       local fileLength = file.getLength()
 
       local remainingBytes = file.read(fileLength - endOfLinePosition)
+
+      print(remainingBytes)
+      
       file.setPosition(position)
 
       file.writeString(remainingBytes)
