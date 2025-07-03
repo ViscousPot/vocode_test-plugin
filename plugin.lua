@@ -107,8 +107,8 @@ function remove(settings, data)
     end
     print(count)
     if (line == firstLine) then 
-      if (count > 0) then
-        for i = 1,count  do
+      if (count > 1) then
+        for i = 1,count-1  do
           print(file.readForwardLine())
         end 
       end
