@@ -1,4 +1,5 @@
 function applyTemplate(data, template)
+  print("/////applyTemplate")
   local text = data["text"];
   print(text)
   local timestamp = data["timestamp"];
