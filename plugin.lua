@@ -63,7 +63,7 @@ function remove(settings, data)
   local body = json.decode(response)
 
   print("body gotted")
-  print(headers)
+  print(headers["Authorization"])
   print(body)
   print(body["results"])
 
