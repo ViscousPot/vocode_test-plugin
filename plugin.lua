@@ -36,27 +36,6 @@
 -- end
 
 function add(settings, data)
-  -- local api_token = settings["API Token"]
-  -- local headers = {
-  --     Authorization = "Bearer " .. api_token,
-  --     ["Content-Type"] = "application/json"
-  -- }
-  -- local body = '{"content": "' .. data["text"] .. '", "labels": ["' .. data["timestamp"] .. '"]}'
-
-  -- local response = http.post("https://api.todoist.com/api/v1/tasks", headers, body, {})
-  return true
-end
-
-function remove(settings, data)
-  -- local api_token = settings["API Token"]
-  -- local headers = {
-  --     Authorization = "Bearer " .. api_token,
-  --     ["Content-Type"] = "application/json"
-  -- }
-  -- local body = '{"query": "@' .. data["timestamp"] .. '", "limit": 1}'
-
-  -- local response = http.get("https://api.todoist.com/api/v1/tasks/filter", headers, body, {})
-  -- print(response)
   local api_token = settings["API Token"]
   local headers = {
       Authorization = "Bearer " .. api_token,
@@ -65,10 +44,10 @@ function remove(settings, data)
   local body = '{"content": "' .. data["text"] .. '", "labels": ["' .. data["timestamp"] .. '"]}'
 
   local response = http.post("https://api.todoist.com/api/v1/tasks", headers, body, {})
-
-  -- local body = json.decode(response)
-  -- print(body)
   return true
+end
+
+function remove(settings, data)
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
   --   return false
