@@ -101,7 +101,8 @@ function remove(settings, data)
   if body["results"] then
     print("test right here")
   end
-  print(type(body["results"]))
+  local testthis = body["results"]
+  print(type(testthis))
   if body["results"][1] then
     print("test right here1")
   end
