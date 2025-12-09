@@ -58,7 +58,7 @@ function remove(settings, data)
   local response = http.get(url, headers, {})
 
   print("response gotted")
-  print(response)
+  print(response["results"])
   print("Response: " .. response)
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
