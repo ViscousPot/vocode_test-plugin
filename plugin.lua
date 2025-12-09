@@ -55,7 +55,7 @@ function remove(settings, data)
   }
   local url = 'https://api.todoist.com/api/v1/tasks/filter?query=@1765304470739'
 
-  local response = http.get(url, headers, {})
+  local response = http.get(url, headers, "", {})
 
   print("response gotted")
   print(response)
@@ -106,9 +106,12 @@ function remove(settings, data)
   print(body["results"][1])
   print(body["results"][1]["id"])
 
-  if body["results"][1] then
-    print("test right here1")
+  if not body["results"][1]["id"] then
+    return false
   end
+
+  local deleteUrl = 'https://api.todoist.com/api/v1/tasks/' .. body["results"][1]["id"]
+  http.delete(deleteUrl, headers, "", {})
   -- print(body)
   -- print(body["results"][1]["id"])
 
