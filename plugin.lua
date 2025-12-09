@@ -37,7 +37,7 @@
 
 function add(settings, data)
   print("add test")
-  http.get("https://api.sampleapis.com/coffee/hot", {}, {});
+  local repsonse = http.get("https://api.sampleapis.com/coffee/hot", {}, {});
 
   print("response gotted")
   print(response)
@@ -143,5 +143,6 @@ end
 
 function getInitialSettings()
   return {
+      { name = "Edit Offset", _description = "An integer (+-) specifying the number of lines relative to the anchor string's location where the editing should occur.", type = "number", _default = -1, _hint = "-1" },
   }
 end
