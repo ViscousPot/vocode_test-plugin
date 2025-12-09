@@ -98,8 +98,11 @@ function remove(settings, data)
   -- }
 
   print("body gotted")
-  print(body)
-  print(body["results"][1]["id"])
+  if body["results"] then
+    print("test right here")
+  end
+  -- print(body)
+  -- print(body["results"][1]["id"])
 
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
