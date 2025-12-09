@@ -16,7 +16,7 @@ function remove(settings, data)
       Authorization = "Bearer " .. api_token,
       ["Content-Type"] = "application/json"
   }
-  local url = 'https://api.todoist.com/api/v1/tasks/filter?query=@1765304470739'
+  local url = 'https://api.todoist.com/api/v1/tasks/filter?query=@' .. data["timestamp"]
   local response = http.get(url, headers, "", {})
   local body = json.decode(response)
 
