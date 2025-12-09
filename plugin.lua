@@ -37,7 +37,7 @@
 
 function add(settings, data)
   print("add test")
-  local repsonse = http.get("https://api.sampleapis.com/coffee/hot", {}, {});
+  local response = http.get("https://api.sampleapis.com/coffee/hot", {}, {});
 
   print("response gotted")
   print(response)
