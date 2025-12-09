@@ -53,9 +53,13 @@ function remove(settings, data)
       Authorization = "Bearer " .. api_token,
       ["Content-Type"] = "application/json"
   }
-  local body = '{"content": "' .. data["text"] .. '", "labels": ["' .. data["timestamp"] .. '"]}'
+  local body = '{"query": "@1765304470739"]}'
 
-  local response = http.post("https://api.todoist.com/api/v1/tasks", headers, body, {})
+  local response = http.post("https://api.todoist.com/api/v1/tasks/filter", headers, body, {})
+  
+  print("response gotted")
+  print(response)
+  print("Response: " .. response)
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
   --   return false
