@@ -58,8 +58,8 @@ function remove(settings, data)
   local response = http.get("https://api.todoist.com/api/v1/tasks/filter", headers, body, {})
   print(response)
 
-  local body = json.decode(response)
-  print(body)
+  -- local body = json.decode(response)
+  -- print(body)
   return true
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
