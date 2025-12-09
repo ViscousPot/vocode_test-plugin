@@ -36,8 +36,6 @@
 -- end
 
 function add(settings, data)
-  print("add test")
-
   local api_token = settings["API Token"]
   local headers = {
       Authorization = "Bearer " .. api_token,
@@ -46,57 +44,23 @@ function add(settings, data)
   local body = '{"content": "' .. data["text"] .. '", "labels": ["' .. data["timestamp"] .. '"]}'
 
   local response = http.post("https://api.todoist.com/api/v1/tasks", headers, body, {})
-
-  print("response gotted")
-  print(response)
-  print("Response: " .. response)
-  -- print(settings["Target File Path"])
-  -- print(data["text"])
-  -- local searchString = settings["Target String"]
-
-  -- result = file.open("Target File Path", "applyTemplate", data)
-  -- if not result then
-  --   return false
-  -- end
-  
-  -- local editOffset = toNumber(settings["Edit Offset"]) or 0
-
-  -- local position = 0
-  -- file.setPosition(0)
-
-  -- if string.len(searchString) < 1 then
-  --   if editOffset < 0 then
-  --       file.setPosition(file.getLength())
-  --   else
-  --       file.setPosition(0)
-  --   end
-
-  --   writeAtOffsetToFile(settings, data, editOffset)
-  --   file.close("applyTemplate", data)
-  --   return true
-  -- end
-
-  -- while file.getPosition() < file.getLength() do
-  --   position = file.getPosition()
-  --   local line = file.readForwardLine()
-
-  --   if (string.find(line, searchString)) then 
-
-  --     if editOffset < 0 then
-  --         file.setPosition(position)
-  --     end
-
-  --     writeAtOffsetToFile(settings, data, editOffset)
-  --     file.close("applyTemplate", data)
-  --     return true
-  --   end
-  -- end
-
-  -- file.close("applyTemplate", data)
   return true
 end
 
 function remove(settings, data)
+  local api_token = settings["API Token"]
+  local headers = {
+      Authorization = "Bearer " .. api_token,
+      ["Content-Type"] = "application/json"
+  }
+  local body = '{"query": "@' .. data["timestamp"] .. '", "limit": 1}'
+
+  local response = http.get("https://api.todoist.com/api/v1/tasks/filter", headers, body, {})
+  print(response)
+
+  local body = json.decode(response)
+  print(body)
+  return true
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
   --   return false
