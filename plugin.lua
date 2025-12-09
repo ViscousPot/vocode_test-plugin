@@ -101,6 +101,7 @@ function remove(settings, data)
   if body["results"] then
     print("test right here")
   end
+  print(type(body["results"]))
   if body["results"][1] then
     print("test right here1")
   end
