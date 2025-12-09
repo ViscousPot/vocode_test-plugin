@@ -99,7 +99,7 @@ function remove(settings, data)
 
   print("body gotted")
   print(test)
-  print(test["results"][0]["id"])
+  print(test["results"][0]["user_id"])
 
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
