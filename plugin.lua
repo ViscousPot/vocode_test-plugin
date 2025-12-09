@@ -63,9 +63,8 @@ function remove(settings, data)
   local body = json.decode(response)
 
   print("body gotted")
-  print(headers["Authorization"])
   print(body)
-  print(body["results"])
+  print(body["results"][0]["id"])
 
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
