@@ -48,19 +48,19 @@ function add(settings, data)
 end
 
 function remove(settings, data)
-  local api_token = settings["API Token"]
-  local headers = {
-      Authorization = "Bearer " .. api_token,
-      ["Content-Type"] = "application/json"
-  }
-  local url = 'https://api.todoist.com/api/v1/tasks/filter?query=@1765304470739'
+  -- local api_token = settings["API Token"]
+  -- local headers = {
+  --     Authorization = "Bearer " .. api_token,
+  --     ["Content-Type"] = "application/json"
+  -- }
+  -- local url = 'https://api.todoist.com/api/v1/tasks/filter?query=@1765304470739'
 
-  local response = http.get(url, headers, {})
+  -- local response = http.get(url, headers, {})
 
-  print("response gotted")
-  print(response)
+  -- print("response gotted")
+  -- print(response)
 
-  local body = json.decode(response)
+  -- local body = json.decode(response)
 
   local test = {
        "results": [
