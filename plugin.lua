@@ -48,58 +48,58 @@ function add(settings, data)
 end
 
 function remove(settings, data)
-  -- local api_token = settings["API Token"]
-  -- local headers = {
-  --     Authorization = "Bearer " .. api_token,
-  --     ["Content-Type"] = "application/json"
-  -- }
-  -- local url = 'https://api.todoist.com/api/v1/tasks/filter?query=@1765304470739'
-
-  -- local response = http.get(url, headers, {})
-
-  -- print("response gotted")
-  -- print(response)
-
-  -- local body = json.decode(response)
-
-  local test = {
-      results = {
-          {
-              user_id = "15065854",
-              id = "6fRqj7gwXPVM3v55",
-              project_id = "6CrfQ5WfxXvxxgx5",
-              section_id = nil,                     -- Changed null to nil
-              parent_id = nil,                      -- Changed null to nil
-              added_by_uid = "15065854",
-              assigned_by_uid = nil,                -- Changed null to nil
-              responsible_uid = nil,                -- Changed null to nil
-              labels = {                            -- Changed square brackets to curly braces
-                  "1765304470739"
-              },
-              deadline = nil,                       -- Changed null to nil
-              duration = nil,                       -- Changed null to nil
-              checked = false,
-              is_deleted = false,
-              added_at = "2025-12-09T18:21:13.581690Z",
-              completed_at = nil,                   -- Changed null to nil
-              completed_by_uid = nil,               -- Changed null to nil
-              updated_at = "2025-12-09T18:21:13.581713Z",
-              due = nil,                            -- Changed null to nil
-              priority = 1,
-              child_order = 1,
-              content = "Test Run Started!",
-              description = "",
-              note_count = 0,
-              day_order = -1,
-              is_collapsed = false
-          }
-      },
-      next_cursor = nil                        -- Changed null to nil
+  local api_token = settings["API Token"]
+  local headers = {
+      Authorization = "Bearer " .. api_token,
+      ["Content-Type"] = "application/json"
   }
+  local url = 'https://api.todoist.com/api/v1/tasks/filter?query=@1765304470739'
+
+  local response = http.get(url, headers, {})
+
+  print("response gotted")
+  print(response)
+
+  local body = json.decode(response)
+
+  -- local test = {
+  --     results = {
+  --         {
+  --             user_id = "15065854",
+  --             id = "6fRqj7gwXPVM3v55",
+  --             project_id = "6CrfQ5WfxXvxxgx5",
+  --             section_id = nil,                     -- Changed null to nil
+  --             parent_id = nil,                      -- Changed null to nil
+  --             added_by_uid = "15065854",
+  --             assigned_by_uid = nil,                -- Changed null to nil
+  --             responsible_uid = nil,                -- Changed null to nil
+  --             labels = {                            -- Changed square brackets to curly braces
+  --                 "1765304470739"
+  --             },
+  --             deadline = nil,                       -- Changed null to nil
+  --             duration = nil,                       -- Changed null to nil
+  --             checked = false,
+  --             is_deleted = false,
+  --             added_at = "2025-12-09T18:21:13.581690Z",
+  --             completed_at = nil,                   -- Changed null to nil
+  --             completed_by_uid = nil,               -- Changed null to nil
+  --             updated_at = "2025-12-09T18:21:13.581713Z",
+  --             due = nil,                            -- Changed null to nil
+  --             priority = 1,
+  --             child_order = 1,
+  --             content = "Test Run Started!",
+  --             description = "",
+  --             note_count = 0,
+  --             day_order = -1,
+  --             is_collapsed = false
+  --         }
+  --     },
+  --     next_cursor = nil                        -- Changed null to nil
+  -- }
 
   print("body gotted")
-  print(test)
-  print(test["results"][1]["user_id"])
+  print(body)
+  print(body["results"][1]["id"])
 
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
