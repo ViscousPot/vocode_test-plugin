@@ -62,9 +62,44 @@ function remove(settings, data)
 
   local body = json.decode(response)
 
+  local test = {
+       "results": [
+               {
+                       "user_id": "15065854",
+                       "id": "6fRqj7gwXPVM3v55",
+                       "project_id": "6CrfQ5WfxXvxxgx5",
+                       "section_id": null,
+                       "parent_id": null,
+                       "added_by_uid": "15065854",
+                       "assigned_by_uid": null,
+                       "responsible_uid": null,
+                       "labels": [
+                               "1765304470739"
+                       ],
+                       "deadline": null,
+                       "duration": null,
+                       "checked": false,
+                       "is_deleted": false,
+                       "added_at": "2025-12-09T18:21:13.581690Z",
+                       "completed_at": null,
+                       "completed_by_uid": null,
+                       "updated_at": "2025-12-09T18:21:13.581713Z",
+                       "due": null,
+                       "priority": 1,
+                       "child_order": 1,
+                       "content": "Test Run Started!",
+                       "description": "",
+                       "note_count": 0,
+                       "day_order": -1,
+                       "is_collapsed": false
+               }
+       ],
+       "next_cursor": null
+  }
+
   print("body gotted")
-  print(body)
-  print(body["results"][0]["id"])
+  print(test)
+  print(test["results"][0]["id"])
 
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
