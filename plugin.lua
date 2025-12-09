@@ -37,7 +37,7 @@
 
 function add(settings, data)
   print("add test")
-  local response = http.get("https://api.sampleapis.com/coffee/hot", {}, {});
+  http.get("https://api.sampleapis.com/coffee/hot", {}, {});
 
   print("response gotted")
   print(response)
@@ -143,9 +143,5 @@ end
 
 function getInitialSettings()
   return {
-      { name = "Target File Path", _description = "The file path of the target file to be edited." ,  type = "file", _customPathTemplateOptions = { date = "Formatted date of creation", text = "Text being inserted", time = "Formatted time of creation" } },
-      { name = "Formatting", _description = "Defines the formatting to apply to the text being inserted into the file.", type = "formatting", _defaultValue = "__{{text}}__", _templateOptions = { text = "Text being inserted", time = "Formatted time of creation", date = "Formatted date of creation" } },
-      { name = "Target String", _description = "The plugin will search for the first line containing this string to determine the location for editing." , type = "text", _default = "", _hint = "leave empty to edit relative to EOF" },
-      { name = "Edit Offset", _description = "An integer (+-) specifying the number of lines relative to the anchor string's location where the editing should occur.", type = "number", _default = -1, _hint = "-1" },
   }
 end
