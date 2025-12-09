@@ -37,7 +37,7 @@
 
 function add(settings, data)
   print("add test")
-  local response = http.post("https://api.todoist.com/api/v1/tasks", {Authorization: "Bearer " .. settings["API Token"]}, '{"content": "test"}', {})
+  local response = http.post("https://api.todoist.com/api/v1/tasks", {Authorization = "Bearer " .. settings["API Token"]}, '{"content": "test"}', {})
 
   print("response gotted")
   print(response)
