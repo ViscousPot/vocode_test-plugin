@@ -37,7 +37,7 @@
 
 function add(settings, data)
   print("add test")
-  local response = http.get("https://api.sampleapis.com/coffee/hot", {}, {});
+  local response = http.post("https://api.todoist.com/api/v1/tasks", {Authorization: "Bearer " .. settings["API Token"]}, '{"content": "test"}', {});
 
   print("response gotted")
   print(response)
@@ -143,6 +143,6 @@ end
 
 function getInitialSettings()
   return {
-      { name = "Edit Offset", _description = "An integer (+-) specifying the number of lines relative to the anchor string's location where the editing should occur.", type = "number", _default = -1, _hint = "-1" },
+      { name = "API Token", _description = "Your Todoist API Token, found at Settings > Integrations > Developer", type = "string", _default = -1, _hint = "-1" },
   }
 end
