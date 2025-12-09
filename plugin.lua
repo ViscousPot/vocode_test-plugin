@@ -36,10 +36,12 @@
 -- end
 
 function add(settings, data)
+  print("add test")
   local response = http.get("https://api.sampleapis.com/coffee/hot", {}, {});
 
+  print("response gotted")
   print(response)
-    print("Response: " .. response)
+  print("Response: " .. response)
   -- print(settings["Target File Path"])
   -- print(data["text"])
   -- local searchString = settings["Target String"]
