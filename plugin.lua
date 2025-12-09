@@ -1,139 +1,142 @@
-function applyTemplate(data, template)
-  print("/////applyTemplate")
-  local text = data["text"]
-  print(text)
-  local timestamp = data["timestamp"]
-  print(timestamp)
-  local timestampNum = toNumber(timestamp)
-  print(timestampNum)
-  local dateString = os.date("yyyy-MM-dd", timestampNum)
-  local timeString = os.date("HH:mm:ss", timestampNum)
-  print(string.interpolate(template, { text = text, date = dateString, time = timeString }))
-  return string.interpolate(template, { text = text, date = dateString, time = timeString })
-end
+-- function applyTemplate(data, template)
+--   print("/////applyTemplate")
+--   local text = data["text"]
+--   print(text)
+--   local timestamp = data["timestamp"]
+--   print(timestamp)
+--   local timestampNum = toNumber(timestamp)
+--   print(timestampNum)
+--   local dateString = os.date("yyyy-MM-dd", timestampNum)
+--   local timeString = os.date("HH:mm:ss", timestampNum)
+--   print(string.interpolate(template, { text = text, date = dateString, time = timeString }))
+--   return string.interpolate(template, { text = text, date = dateString, time = timeString })
+-- end
 
-function writeAtOffsetToFile(settings, data, editOffset)
-  for i = 1, math.abs(editOffset) do
-      if editOffset > 0 then
-          file.readForwardLine()
-      elseif editOffset < 0 then
-          file.readBackwardLine()
-      end
-  end
+-- function writeAtOffsetToFile(settings, data, editOffset)
+--   for i = 1, math.abs(editOffset) do
+--       if editOffset > 0 then
+--           file.readForwardLine()
+--       elseif editOffset < 0 then
+--           file.readBackwardLine()
+--       end
+--   end
 
-  local adjustedPosition = file.getPosition()
+--   local adjustedPosition = file.getPosition()
 
-  local remainingBytes = file.read(file.getLength() - adjustedPosition)
-  file.setPosition(adjustedPosition)
+--   local remainingBytes = file.read(file.getLength() - adjustedPosition)
+--   file.setPosition(adjustedPosition)
 
-  print(editOffset)
-  if editOffset >= 0 then
-      file.writeString(applyTemplate(data, settings["Formatting"]) .. '\n')
-  else
-      file.writeString('\n' .. applyTemplate(data, settings["Formatting"]))
-  end
-  file.writeString(remainingBytes)
-end
+--   print(editOffset)
+--   if editOffset >= 0 then
+--       file.writeString(applyTemplate(data, settings["Formatting"]) .. '\n')
+--   else
+--       file.writeString('\n' .. applyTemplate(data, settings["Formatting"]))
+--   end
+--   file.writeString(remainingBytes)
+-- end
 
 function add(settings, data)
-  print(settings["Target String"])
-  print(settings["Target File Path"])
-  print(data["text"])
-  local searchString = settings["Target String"]
+  local response = http.get("https://api.sampleapis.com/coffee/hot", {}, {});
 
-  result = file.open("Target File Path", "applyTemplate", data)
-  if not result then
-    return false
-  end
+  print(response)
+    print("Response: " .. response)
+  -- print(settings["Target File Path"])
+  -- print(data["text"])
+  -- local searchString = settings["Target String"]
+
+  -- result = file.open("Target File Path", "applyTemplate", data)
+  -- if not result then
+  --   return false
+  -- end
   
-  local editOffset = toNumber(settings["Edit Offset"]) or 0
+  -- local editOffset = toNumber(settings["Edit Offset"]) or 0
 
-  local position = 0
-  file.setPosition(0)
+  -- local position = 0
+  -- file.setPosition(0)
 
-  if string.len(searchString) < 1 then
-    if editOffset < 0 then
-        file.setPosition(file.getLength())
-    else
-        file.setPosition(0)
-    end
+  -- if string.len(searchString) < 1 then
+  --   if editOffset < 0 then
+  --       file.setPosition(file.getLength())
+  --   else
+  --       file.setPosition(0)
+  --   end
 
-    writeAtOffsetToFile(settings, data, editOffset)
-    file.close("applyTemplate", data)
-    return true
-  end
+  --   writeAtOffsetToFile(settings, data, editOffset)
+  --   file.close("applyTemplate", data)
+  --   return true
+  -- end
 
-  while file.getPosition() < file.getLength() do
-    position = file.getPosition()
-    local line = file.readForwardLine()
+  -- while file.getPosition() < file.getLength() do
+  --   position = file.getPosition()
+  --   local line = file.readForwardLine()
 
-    if (string.find(line, searchString)) then 
+  --   if (string.find(line, searchString)) then 
 
-      if editOffset < 0 then
-          file.setPosition(position)
-      end
+  --     if editOffset < 0 then
+  --         file.setPosition(position)
+  --     end
 
-      writeAtOffsetToFile(settings, data, editOffset)
-      file.close("applyTemplate", data)
-      return true
-    end
-  end
+  --     writeAtOffsetToFile(settings, data, editOffset)
+  --     file.close("applyTemplate", data)
+  --     return true
+  --   end
+  -- end
 
-  file.close("applyTemplate", data)
+  -- file.close("applyTemplate", data)
   return true
 end
 
 function remove(settings, data)
-  result = file.open("Target File Path", "applyTemplate", data)
-  if not result then
-    return false
-  end
-  local position = 0
-  file.setPosition(0)
+  -- result = file.open("Target File Path", "applyTemplate", data)
+  -- if not result then
+  --   return false
+  -- end
+  -- local position = 0
+  -- file.setPosition(0)
 
-  local originalText = applyTemplate(data, settings["Formatting"])
+  -- local originalText = applyTemplate(data, settings["Formatting"])
 
-  print(originalText)
+  -- print(originalText)
 
-  while file.getPosition() < file.getLength() do
-    position = file.getPosition()
-    local line = file.readForwardLine()
-    print(line)
+  -- while file.getPosition() < file.getLength() do
+  --   position = file.getPosition()
+  --   local line = file.readForwardLine()
+  --   print(line)
 
-    local firstLine = string.match(originalText, "([^\n]*)")
-    local count = 0
-    for _ in string.gmatch(originalText, "([^\n]+)") do
-      count = count + 1
-    end
+  --   local firstLine = string.match(originalText, "([^\n]*)")
+  --   local count = 0
+  --   for _ in string.gmatch(originalText, "([^\n]+)") do
+  --     count = count + 1
+  --   end
 
-    print(count)
-    if (line == firstLine) then 
-      if (count > 1) then
-        for i = 1,count-1  do
-          print(file.readForwardLine())
-        end 
-      end
-      local endOfLinePosition = file.getPosition()
+  --   print(count)
+  --   if (line == firstLine) then 
+  --     if (count > 1) then
+  --       for i = 1,count-1  do
+  --         print(file.readForwardLine())
+  --       end 
+  --     end
+  --     local endOfLinePosition = file.getPosition()
 
-      local fileLength = file.getLength()
+  --     local fileLength = file.getLength()
 
-      local remainingBytes = file.read(fileLength - endOfLinePosition)
+  --     local remainingBytes = file.read(fileLength - endOfLinePosition)
 
-      print(remainingBytes)
+  --     print(remainingBytes)
 
-      file.setPosition(position)
+  --     file.setPosition(position)
 
-      file.writeString(remainingBytes)
+  --     file.writeString(remainingBytes)
 
-      file.truncate(toInteger(math.max(fileLength - string.len(originalText .. '\n'), 0)))
+  --     file.truncate(toInteger(math.max(fileLength - string.len(originalText .. '\n'), 0)))
               
-      file.close("applyTemplate", data)
-      return true
-    end
-  end
+  --     file.close("applyTemplate", data)
+  --     return true
+  --   end
+  -- end
 
-  file.close("applyTemplate", data)
-  return false
+  -- file.close("applyTemplate", data)
+  return true
 end
 
 function getInitialSettings()
