@@ -50,8 +50,8 @@ end
 function remove(settings, data)
   local api_token = settings["API Token"]
   local headers = {
-      -- Authorization = "Bearer " .. api_token,
-      -- ["Content-Type"] = "application/json"
+      Authorization = "Bearer " .. api_token,
+      ["Content-Type"] = "application/json"
   }
   local url = 'https://api.todoist.com/api/v1/tasks/filter?query=@1765304470739'
 
