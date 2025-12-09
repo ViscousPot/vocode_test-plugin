@@ -143,6 +143,6 @@ end
 
 function getInitialSettings()
   return {
-      { name = "API Token", _description = "Your Todoist API Token, found at Settings > Integrations > Developer", type = "string", _default = -1, _hint = "-1" },
+      { name = "API Token", _description = "Your Todoist API Token, found at Settings > Integrations > Developer", type = "string", _default = "", _hint = "0123456789abcdef0123456789abcdef01234567" },
   }
 end
