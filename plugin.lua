@@ -43,8 +43,9 @@ function add(settings, data)
       Authorization = "Bearer " .. api_token,
       ["Content-Type"] = "application/json"
   }
+  local body = '{"content": "' .. data["text"] .. '", "labels": ["' .. data["timestamp"] .. '"]}'
 
-  local response = http.post("https://api.todoist.com/api/v1/tasks", headers, '{"content": "test"}', {})
+  local response = http.post("https://api.todoist.com/api/v1/tasks", headers, body, {})
 
   print("response gotted")
   print(response)
