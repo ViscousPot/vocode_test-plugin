@@ -36,14 +36,14 @@
 -- end
 
 function add(settings, data)
-  local api_token = settings["API Token"]
-  local headers = {
-      Authorization = "Bearer " .. api_token,
-      ["Content-Type"] = "application/json"
-  }
-  local body = '{"content": "' .. data["text"] .. '", "labels": ["' .. data["timestamp"] .. '"]}'
+  -- local api_token = settings["API Token"]
+  -- local headers = {
+  --     Authorization = "Bearer " .. api_token,
+  --     ["Content-Type"] = "application/json"
+  -- }
+  -- local body = '{"content": "' .. data["text"] .. '", "labels": ["' .. data["timestamp"] .. '"]}'
 
-  local response = http.post("https://api.todoist.com/api/v1/tasks", headers, body, {})
+  -- local response = http.post("https://api.todoist.com/api/v1/tasks", headers, body, {})
   return true
 end
 
