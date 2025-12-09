@@ -103,6 +103,7 @@ function remove(settings, data)
   end
 
   print(body["results"])
+  print(body["results"][1])
 
   if body["results"][1] then
     print("test right here1")
