@@ -101,12 +101,8 @@ function remove(settings, data)
   if body["results"] then
     print("test right here")
   end
-  if body["results"][2] then
-    print("test right here2")
   if body["results"][1] then
     print("test right here1")
-  if body["results"][0] then
-    print("test right here0")
   end
   -- print(body)
   -- print(body["results"][1]["id"])
