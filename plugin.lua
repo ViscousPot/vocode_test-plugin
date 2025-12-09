@@ -98,12 +98,12 @@ function remove(settings, data)
   -- }
 
   print("body gotted")
+  for key,value in pairs(body) do
+    print(key .. " = " .. value)
+  end
   if body["results"] then
     print("test right here")
 
-  for key,value in pairs(body) do
-    print(key)
-  end
 
   end
   if body["results"][1] then
