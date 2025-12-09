@@ -111,7 +111,7 @@ function remove(settings, data)
   end
 
   local deleteUrl = 'https://api.todoist.com/api/v1/tasks/' .. body["results"][1]["id"]
-  http.delete(deleteUrl, headers, "", {})
+  http.delete(deleteUrl, headers, {})
   -- print(body)
   -- print(body["results"][1]["id"])
 
