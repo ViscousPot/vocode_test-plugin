@@ -55,8 +55,8 @@ function remove(settings, data)
   }
   local body = '{"query": "@1765304470739"]}'
 
-  local response = http.post("https://api.todoist.com/api/v1/tasks/filter", headers, body, {})
-  
+  local response = http.get("https://api.todoist.com/api/v1/tasks/filter", headers, body, {})
+
   print("response gotted")
   print(response)
   print("Response: " .. response)
