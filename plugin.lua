@@ -59,6 +59,13 @@ function remove(settings, data)
 
   print("response gotted")
   print(response)
+
+  local body = json.decode(response)
+
+  print("body gotted")
+  print(body)
+  print(body["results"])
+
   print("Response: " .. response)
   -- result = file.open("Target File Path", "applyTemplate", data)
   -- if not result then
