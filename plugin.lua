@@ -100,8 +100,6 @@ function remove(settings, data)
   print("body gotted")
   if body["results"] then
     print("test right here")
-    local testthis = body["results"]
-    print(type(testthis))
   end
   if body["results"][1] then
     print("test right here1")
